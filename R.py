@@ -2,13 +2,22 @@ import tkinter as tk
 import sys
 import os
 
+#Description
+# Program starts on root window, cont1 frame
+# root --> encryptfile && changePassword
+# changePassword --> retrieveOpass
+# encryptfile --> retrievePassword && goodPass && badPass && retrieveFilename
+#                 displayError && displayOriginaltext 
+# displayOriginaltext --> encryptAlgorithm && displayFinalText
+# displayFinaltext --> outputFile
+
 root = tk.Tk()
 cont1 = tk.Frame(root)
 cont1.grid()
 
 # PREDEFINED FUNCTIONS FOR USE IN APP
 def retrieveOpass(self):
-        opass = self.w0ent1.get()
+        opass = w0ent1.get()
         print(opass)
         #print("trouble getting entry")
 
@@ -21,16 +30,14 @@ def changePassword(self):
         w0lab1.grid(row=1)
         w0lab2 = tk.Label(cont0,text="Old password:")
         w0lab2.grid(row=2,column=0)
-        w0ent1 = tk.Entry(cont0,textvariable = v)
+        w0ent1 = tk.Entry(cont0)
         w0ent1.grid(row=2,column=1)
-        v.set("a default value")
         w0lab3 = tk.Label(cont0,text="New password:")
         w0lab3.grid(row=3,column=0)
         w0ent2 = tk.Entry(cont0)
         w0ent2.grid(row=3,column=1)
-        w0ent2.focus_set()
         npass = w0ent2.get()
-        w0but1 = tk.Button(cont0,text="Enter",command=lambda: retrieveOpass(self))
+        w0but1 = tk.Button(cont0,text="Enter",command=lambda: retrieveOpass)
         w0but1.grid(row=4)
 
         
@@ -63,13 +70,19 @@ def displayError(self,mystr):
         w4lab1.grid()
 
 def badPass(self):
-        specialLabel = tk.Label(cont1,text="Wrong Password: Try again")
-        specialLabel.grid(row=6)
+        specialLabel1 = tk.Label(cont1,text="Wrong Password: Try again")
+        specialLabel1.grid(row=6)
+        # Edit needed: delete label for aesthetics
+        #if(self.specialLabel2.winfo_exists()):
+        #self.specialLabel2.destroy()
 
 
 def goodPass(self):
-        specialLabel = tk.Label(cont1,text="Password confirmed")
-        specialLabel.grid(row=6)
+        specialLabel2 = tk.Label(cont1,text="Password confirmed")
+        specialLabel2.grid(row=6)
+        # Edit needed: delete label for aesthetics
+        #if(self.specialLabel1.winfo_exists()):
+        #self.specialLabel2.destroy()
 
 def displayOriginalText(self,mystr,Off):
         if( Off == False):
